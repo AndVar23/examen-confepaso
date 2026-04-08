@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Examen Reglamento CONFEPASO 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#C9A84C;--gold-light:#E8C97A;--dark:#0D0D0D;--dark-card:#242424;--dark-border:#333;--white:#F5F0E8;--white-dim:#B8B0A0;--green:#4CAF72;--red:#E05252;--radius:12px;--tr:all 0.3s cubic-bezier(.4,0,.2,1)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--white);min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 20% 20%,rgba(201,168,76,.06) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(201,168,76,.04) 0%,transparent 60%);pointer-events:none;z-index:0}
+.container{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:24px 20px 60px}
+.header{text-align:center;padding:48px 0 40px;border-bottom:1px solid var(--dark-border);margin-bottom:40px}
+.badge{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.35);padding:6px 16px;border-radius:100px;margin-bottom:20px;background:rgba(201,168,76,.06)}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(28px,6vw,44px);font-weight:900;line-height:1.1;margin-bottom:12px}
+.header h1 span{color:var(--gold)}
+.header p{font-size:15px;color:var(--white-dim);line-height:1.6;max-width:480px;margin:0 auto}
+.info-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:32px 0}
+.info-card{background:var(--dark-card);border:1px solid var(--dark-border);border-radius:var(--radius);padding:20px 16px;text-align:center}
+.info-card .num{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--gold);display:block}
+.info-card .lbl{font-size:12px;color:var(--white-dim);margin-top:4px;text-transform:uppercase;letter-spacing:.08em}
+.note{color:var(--white-dim);font-size:14px;line-height:1.7;margin-bottom:28px;background:var(--dark-card);padding:18px;border-radius:var(--radius);border:1px solid var(--dark-border)}
+.note strong{color:var(--gold)}
+.btn-main{display:block;width:100%;padding:18px;background:var(--gold);color:var(--dark);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;letter-spacing:.04em;border:none;border-radius:var(--radius);cursor:pointer;transition:var(--tr);text-transform:uppercase}
+.btn-main:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,.25)}
+.progress-wrap{background:var(--dark-card);border-radius:100px;height:6px;margin-bottom:28px;overflow:hidden;border:1px solid var(--dark-border)}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:100px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+.q-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;font-size:13px}
+.q-num{color:var(--gold);font-weight:600;letter-spacing:.05em}
+.q-of{color:var(--white-dim)}
+.q-card{background:var(--dark-card);border:1px solid var(--dark-border);border-radius:16px;padding:32px;margin-bottom:20px;animation:fadeUp .4s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.q-text{font-family:'Playfair Display',serif;font-size:clamp(16px,3vw,20px);font-weight:400;line-height:1.5;margin-bottom:28px}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:rgba(255,255,255,.03);border:1px solid var(--dark-border);border-radius:10px;cursor:pointer;transition:var(--tr);text-align:left;color:var(--white);font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.5;width:100%}
+.opt:hover:not(:disabled){border-color:rgba(201,168,76,.5);background:rgba(201,168,76,.06)}
+.opt:disabled{cursor:default}
+.opt-l{min-width:26px;height:26px;border-radius:50%;background:var(--dark-border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--white-dim);flex-shrink:0;transition:var(--tr)}
+.opt.sel{border-color:var(--gold);background:rgba(201,168,76,.1)}
+.opt.sel .opt-l{background:var(--gold);color:var(--dark)}
+.opt.ok{border-color:var(--green);background:rgba(76,175,114,.1)}
+.opt.ok .opt-l{background:var(--green);color:var(--dark)}
+.opt.bad{border-color:var(--red);background:rgba(224,82,82,.1)}
+.opt.bad .opt-l{background:var(--red);color:#fff}
+.fb{margin-top:16px;padding:14px 18px;border-radius:10px;font-size:13.5px;line-height:1.6;display:none;animation:fadeUp .3s ease both}
+.fb.show{display:block}
+.fb.ok-fb{background:rgba(76,175,114,.1);border:1px solid rgba(76,175,114,.3);color:#7ED4A0}
+.fb.bad-fb{background:rgba(224,82,82,.08);border:1px solid rgba(224,82,82,.25);color:#EF9898}
+.fb strong{color:var(--white)}
+.btn-next{display:none;width:100%;padding:16px;margin-top:16px;background:transparent;border:1px solid var(--gold);border-radius:var(--radius);color:var(--gold);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:var(--tr)}
+.btn-next:hover{background:var(--gold);color:var(--dark)}
+.btn-next.show{display:block}
+.score-hero{text-align:center;padding:40px 0 32px;border-bottom:1px solid var(--dark-border);margin-bottom:36px}
+.score-circle{width:140px;height:140px;border-radius:50%;border:3px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 24px;background:radial-gradient(circle,rgba(201,168,76,.08) 0%,transparent 70%);box-shadow:0 0 40px rgba(201,168,76,.15)}
+.score-num{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;color:var(--gold);line-height:1}
+.score-den{font-size:16px;color:var(--white-dim);margin-top:2px}
+.score-lbl{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;margin-bottom:8px}
+.score-sub{font-size:14px;color:var(--white-dim)}
+.stats-row{display:flex;gap:12px;margin-bottom:36px}
+.stat{flex:1;padding:14px;border-radius:10px;text-align:center;font-size:13px;font-weight:600}
+.stat.ok-s{background:rgba(76,175,114,.1);border:1px solid rgba(76,175,114,.3);color:var(--green)}
+.stat.bad-s{background:rgba(224,82,82,.08);border:1px solid rgba(224,82,82,.25);color:var(--red)}
+.stat .sn{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;display:block}
+.rev-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:20px}
+.rev-item{background:var(--dark-card);border:1px solid var(--dark-border);border-radius:var(--radius);padding:20px;margin-bottom:12px;border-left:3px solid transparent}
+.rev-item.r-ok{border-left-color:var(--green)}
+.rev-item.r-bad{border-left-color:var(--red)}
+.rev-q{font-size:14px;font-weight:500;line-height:1.5;margin-bottom:10px}
+.rev-m{font-size:12.5px;color:var(--white-dim);line-height:1.6}
+.r-ok-t{color:var(--green);font-weight:600}
+.r-bad-t{color:var(--red);font-weight:600}
+.r-exp{margin-top:6px;font-style:italic;display:block}
+.r-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:100px;margin-bottom:8px}
+.rb-ok{background:rgba(76,175,114,.15);color:var(--green)}
+.rb-bad{background:rgba(224,82,82,.12);color:var(--red)}
+.screen{display:none}
+.screen.active{display:block}
+@media(max-width:520px){.info-grid{grid-template-columns:1fr}.stats-row{flex-direction:column}.q-card{padding:20px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+  <div class="badge">CONFEPASO · Edición 2026</div>
+  <h1>Reglamento de <span>Equitación</span></h1>
+  <p>Preparación para el examen teórico del Campeonato Mundial de Jinetes y Amazonas</p>
+</div>
+
+<div id="si" class="screen active">
+  <div class="info-grid">
+    <div class="info-card"><span class="num">100</span><span class="lbl">Preguntas en banco</span></div>
+    <div class="info-card"><span class="num">10</span><span class="lbl">Por examen</span></div>
+    <div class="info-card"><span class="num">∞</span><span class="lbl">Intentos</span></div>
+  </div>
+  <p class="note">Cada vez que inicies se seleccionan <strong>10 preguntas aleatorias</strong> del banco. Al terminar verás cuáles acertaste, cuáles no, y la respuesta correcta con su explicación del reglamento.</p>
+  <button class="btn-main" onclick="startExam()">Comenzar Examen</button>
+</div>
+
+<div id="se" class="screen">
+  <div class="progress-wrap"><div class="progress-fill" id="pf" style="width:0%"></div></div>
+  <div class="q-meta"><span class="q-num" id="qn">Pregunta 1</span><span class="q-of" id="qo">de 10</span></div>
+  <div class="q-card">
+    <p class="q-text" id="qt"></p>
+    <div class="opts" id="ol"></div>
+    <div class="fb" id="fb"></div>
+  </div>
+  <button class="btn-next" id="bn" onclick="nextQ()">Siguiente →</button>
+</div>
+
+<div id="sr" class="screen">
+  <div class="score-hero">
+    <div class="score-circle"><span class="score-num" id="rsn"></span><span class="score-den">/10</span></div>
+    <div class="score-lbl" id="rsl"></div>
+    <div class="score-sub" id="rss"></div>
+  </div>
+  <div class="stats-row">
+    <div class="stat ok-s"><span class="sn" id="rsc"></span>Correctas</div>
+    <div class="stat bad-s"><span class="sn" id="rsw"></span>Incorrectas</div>
+  </div>
+  <div class="rev-title">Revisión pregunta a pregunta</div>
+  <div id="rl"></div>
+  <button class="btn-main" onclick="startExam()" style="margin-top:32px">Nuevo Examen →</button>
+</div>
+</div>
+
+<script>
+const B=[
+{p:"¿Cada cuántos años se organizan los Campeonatos Mundiales Félix Santiago Oliver?",o:["Cada año","Cada dos años","Cada tres años","Cada cuatro años"],r:1,e:"Cap. I, Art. 1: los campeonatos mundiales son organizados por CONFEPASO cada dos años."},
+{p:"¿Qué organismo organiza los Campeonatos Mundiales de Amazonas y Jinetes?",o:["Federación Colombiana","CONFEPASO","El país sede","Comité Olímpico"],r:1,e:"Generalidades: CONFEPASO dirige, coordina, rige y controla las actividades de competencia."},
+{p:"¿Cuántas copias en video de la Exposición Mundial deben entregarse a CONFEPASO?",o:["Una copia","Dos copias","Tres copias","Cuatro copias"],r:1,e:"Cap. I, Art. 1, num. 6: los organizadores deben entregar dos copias a CONFEPASO para su archivo histórico."},
+{p:"¿Con cuántos meses de anticipación debe publicarse el Reglamento en la web de CONFEPASO?",o:["Un mes","Dos meses","Tres meses","Seis meses"],r:2,e:"Cap. I, Art. 1, num. 7: CONFEPASO debe publicar el Reglamento al menos tres meses antes del evento."},
+{p:"¿Cuáles son las medidas mínimas de la pista para eventos Mundiales?",o:["15m ancho x 30m largo","20m ancho x 40m largo","25m ancho x 50m largo","10m ancho x 20m largo"],r:1,e:"Cap. I, Art. 1, num. 8: la pista debe tener mínimo 20 metros de ancho por 40 metros de largo."},
+{p:"¿Qué país sigue a Puerto Rico en el orden de rotación del Campeonato Mundial iniciado en 2024?",o:["Colombia","Estados Unidos","República Dominicana","Venezuela"],r:2,e:"Cap. I, Art. 1, num. 8: el orden de rotación es Puerto Rico (2024), República Dominicana, Estados Unidos y Colombia."},
+{p:"¿Cuál es la edad mínima en meses que debe tener un ejemplar para competir?",o:["36 meses","42 meses","49 meses","60 meses"],r:2,e:"Cap. I, Art. 4, inc. D: todo ejemplar debe cumplir con el mínimo de edad de 49 meses."},
+{p:"¿Qué documentos deben poseer los ejemplares participantes además del registro genealógico?",o:["Certificado de vacunas","Microchip y ADN con verificación de parentesco","Póliza de seguro","Declaración del propietario"],r:1,e:"Cap. I, Art. 4, inc. B: todo ejemplar debe poseer registro genealógico, microchip y ADN con verificación de parentesco."},
+{p:"¿Qué se entiende por participante no profesional según el reglamento?",o:["Quien no tiene licencia deportiva","Quien monta solo para disfrute sin recibir remuneración por montar, adiestrar o exhibir","Quien lleva menos de un año compitiendo","Quien no pertenece a ninguna escuela"],r:1,e:"Cap. I, Art. 4, inc. L: no profesional es quien monta solo para disfrute sin recibir ningún tipo de remuneración económica o beneficio."},
+{p:"¿Para competir por un país que no es el de nacimiento, qué debe poseer el participante?",o:["Solo un permiso especial de CONFEPASO","Nacionalidad o residencia del país a representar","Cinco años viviendo en ese país","Autorización del país de origen"],r:1,e:"Cap. I, Art. 4, inc. J: para competir por otro país, la amazona o jinete debe poseer nacionalidad de dicho país o ser residente."},
+{p:"¿Con cuántos días de anticipación deben hacerse las inscripciones para eventos mundiales?",o:["30 días calendario","45 días calendario","60 días calendario","90 días calendario"],r:2,e:"Cap. IV, Art. 1: las inscripciones se harán por escrito con sesenta (60) días calendario de anticipación."},
+{p:"¿En qué categorías los competidores deben presentarse en caballos castrados o yeguas?",o:["En todas las categorías","Solo en Paralímpicas","En Mini de 4-5 y Pre-Infantiles de 6-8","Solo en Mini de 4 a 5"],r:2,e:"Cap. IV, Art. 2, Parágrafo 2: en las categorías mini (4 a 5) y pre infantiles (6 a 8) años los competidores deben presentarse en caballos castrados o yeguas."},
+{p:"¿Qué color deben ser las botas de los participantes?",o:["Marrón","Negro","A elección del concursante","Blanco"],r:1,e:"Cap. IV, Art. 9, inc. A: botas de cuero de color negro, de tacón bajo y suela lisa."},
+{p:"¿Qué color debe ser el sombrero de los participantes?",o:["Negro con cinta dorada","Blanco o crema con cinta negra o blanca","Marrón con cinta negra","De cualquier color claro"],r:1,e:"Cap. IV, Art. 9, inc. I: el sombrero será blanco o crema con cinta negra o blanca."},
+{p:"¿Está permitido el uso del zamarro en las competencias de CONFEPASO?",o:["Sí, para todas las categorías","Sí, solo para mayores de 18 años","No, queda prohibido su uso","Sí, solo en eventos no mundiales"],r:2,e:"Cap. IV, Art. 9, inc. J: no se permite el uso del zamarro."},
+{p:"¿El uso del casco es obligatorio hasta qué categoría?",o:["Minis de 4 a 5 años","Pre-Infantiles de 6 a 8 años","Infantiles de 9 a 11 años","Junior de 12 a 14 años"],r:2,e:"Cap. IV, Art. 9, inc. G: el uso del casco es obligatorio hasta la categoría Infantiles de 9 a 11. Para el resto es opcional."},
+{p:"¿Qué deben usar obligatoriamente los jinetes y amazonas de la categoría Mini (4 a 5 años)?",o:["Casco y zamarro","Chaleco protector","Botas de goma","Guantes de cuero"],r:1,e:"Cap. IV, Art. 9, inc. H: los jinetes y amazonas minis (4 a 5) deben utilizar chaleco protector."},
+{p:"¿Qué tamaño máximo puede tener la bandera o logotipo en la chaqueta del participante?",o:["5 x 5 cm","10 x 10 cm","15 x 15 cm","20 x 20 cm"],r:1,e:"Cap. IV, Art. 9, inc. D: el tamaño de la bandera o logotipo será de máximo 10 x 10 centímetros."},
+{p:"En eventos mundiales, ¿cómo deben ser la chaqueta y el pantalón de los participantes?",o:["Chaqueta azul marino y pantalón negro","Negros sin brillo, con lazo o corbatín negro","Chaqueta blanca y pantalón negro","Chaqueta de color a elección y pantalón negro"],r:1,e:"Cap. IV, Art. 9, inc. E: en eventos mundiales la chaqueta y pantalón deben ser negros sin brillo, con lazo o corbatín negro."},
+{p:"¿Está permitido el uso de látigos o espuelas dentro de las instalaciones del evento?",o:["Sí, dentro del área de pre-pista","Sí, solo en entrenamientos","No, queda terminantemente prohibido","Sí, para categorías mayores de 18 años"],r:2,e:"Cap. IV, Art. 10: queda terminantemente prohibido el uso de látigos, azotadores, fuetes o espuelas dentro de las instalaciones."},
+{p:"¿Cuántas categorías regulares (no paralímpicas) existen en las competencias de CONFEPASO?",o:["12 categorías","14 categorías","16 categorías","18 categorías"],r:2,e:"Cap. V, Art. 1: existen 16 categorías regulares, desde Amazonas Mini (4-5) hasta Jinetes Aficionados mayores de 25 años."},
+{p:"¿En qué rango de edad se encuentran los participantes de la categoría Junior?",o:["9 a 11 años","12 a 14 años","15 a 17 años","18 a 20 años"],r:1,e:"Cap. V, Art. 1: la categoría Junior (categorías 7 y 8) corresponde a 12 a 14 años."},
+{p:"¿Cuántas categorías paralímpicas existen según el reglamento?",o:["Dos categorías","Tres categorías","Cuatro categorías","Seis categorías"],r:2,e:"Cap. V, Art. 2: existen cuatro categorías paralímpicas: amazonas y jinetes mini hasta 11 y mayores de 12 años."},
+{p:"¿Qué reciben todos los participantes de las categorías paralímpicas?",o:["Medalla de plata","Cinta tricolor","Medalla de oro","Mención honorífica"],r:2,e:"Cap. V, Art. 2: las categorías paralímpicas no son puntuables y todos los participantes reciben medalla de oro."},
+{p:"¿En qué rango de edad se encuentra la categoría Juveniles?",o:["12 a 14 años","15 a 17 años","18 a 20 años","21 a 24 años"],r:1,e:"Cap. V, Art. 1: la categoría Juveniles corresponde a 15 a 17 años."},
+{p:"¿Cuál es la descripción de la postura ideal del jinete vista de costado?",o:["Línea recta a través de cabeza, hombro y cadera","Leve inclinación hacia adelante","Espalda arqueada para mayor control","Cuerpo rígido y tenso"],r:0,e:"Cap. VI, Art. 1, A: la postura ideal vista de costado es aquella en que se puede trazar una línea recta perpendicular al suelo a través de la cabeza, el hombro y la cadera."},
+{p:"¿Qué posición de riendas aplica para las categorías Minis, Pre-Infantiles e Infantiles?",o:["Rienda entre dedos meñique y anular","Una rienda en cada mano","Ambas riendas en la mano izquierda","Solo rienda derecha"],r:1,e:"Cap. VI, Art. 1, F, num. 1: una rienda en cada mano, entrando por debajo del dedo meñique. Aplica para minis (4-5), preinfantiles (6-8) e infantiles (9-11)."},
+{p:"¿A partir de qué categoría aplica la posición de rienda entre dedos meñique y anular?",o:["Pre-infantiles de 6 a 8","Infantiles de 9 a 11","Junior de 12 a 14 en adelante","Juveniles de 15 a 17"],r:2,e:"Cap. VI, Art. 1, F, num. 2: la rienda entre meñique y anular con pulgar encima aplica para categoría Junior de 12 a 14 en adelante."},
+{p:"¿Qué ocurre si un participante no sigue el orden de las pruebas obligatorias?",o:["Descalificación automática","Penalización de hasta 15 puntos en concentración","Pierde solo 5 puntos","Se le da una segunda oportunidad"],r:1,e:"Cap. VII, Parágrafo: no seguir el orden de las pruebas da lugar a penalización de hasta 15 puntos en el renglón de concentración."},
+{p:"¿Cuál de estos NO es un punto de demérito en el juzgamiento?",o:["La rudeza hacia el ejemplar","Levantarse de la montura con el ejemplar en marcha","Llevar el sombrero reglamentario","La pérdida de uno o ambos estribos"],r:2,e:"Cap. VI, Art. 8: los puntos de demérito incluyen rudeza, levantarse de la montura y pérdida de estribos. El sombrero reglamentario es una obligación, no un demérito."},
+{p:"¿Qué motivo es causa de descalificación según el artículo 9?",o:["Perder un estribo momentáneamente","Girar sobre la tabla de resonancia","No mantener el ritmo exacto en la serpentina","Usar el sombrero sin cinta"],r:1,e:"Cap. VI, Art. 9, num. 6: girar sobre la tabla de resonancia es motivo de descalificación."},
+{p:"¿En qué categorías los motivos de descalificación del Art. 9 se aplican solo como penalizaciones?",o:["Solo en Infantiles","En Mini, Preinfantiles y Paralímpicas","Solo en Paralímpicas","En Junior y Juveniles"],r:1,e:"Cap. VI, Art. 10, Parágrafo: en las categorías Mini, Preinfantiles y Paralímpicas los motivos de descalificación del Art. 9 aplican como penalizables."},
+{p:"¿Cuántas veces puede cambiar de caballo un participante cuyo ejemplar muestre indocilidad?",o:["Dos veces","Solo una vez","Tres veces","Las que el juez autorice"],r:1,e:"Cap. VI, Art. 10: el participante tendrá solo una (1) oportunidad de cambio de caballo por indocilidad."},
+{p:"¿Cuántas destrezas de manejo deben considerar los jueces según el Art. 1 H?",o:["Cinco","Siete","Nueve","Once"],r:2,e:"Cap. VI, Art. 1, H: los jueces deben considerar y apreciar nueve destrezas de manejo, desde sentido del ritmo hasta garbo y elegancia."},
+{p:"¿Qué se evalúa en las categorías paralímpicas de discapacidad física?",o:["Solo la parte afectada","La parte no afectada y el esfuerzo sobre la parte afectada","Solo la estabilidad en la montura","Solo el control de riendas"],r:1,e:"Cap. VI, Art. 1, I: la posición se evalúa sobre la parte del cuerpo no afectada y una apreciación del esfuerzo sobre la parte afectada."},
+{p:"¿Cuál es la distribución porcentual del juzgamiento entre postura y manejo?",o:["50% postura y 50% manejo","40% postura y 60% manejo","60% postura y 40% manejo","30% postura y 70% manejo"],r:1,e:"Cap. VII, tabla de puntaje: el juzgamiento se basa en un 40% postura y 60% manejo del ejemplar."},
+{p:"¿Cuántos puntos vale el componente Asiento (Sentada) en la tabla de puntaje?",o:["4 puntos","6 puntos","8 puntos","10 puntos"],r:2,e:"Cap. VII, tabla de puntaje: Asiento (Sentada) vale 8 puntos dentro de la sección Postura."},
+{p:"¿Cuántos puntos vale la Figura del 8 (incluye Entrada y Plantada)?",o:["5 puntos","7 puntos","10 puntos","3 puntos"],r:1,e:"Cap. VII, tabla de puntaje: Figura del 8 (incluye Entrada y Plantada) vale 7 puntos."},
+{p:"¿Cuántos puntos vale la Cejada o Retroceso?",o:["2 puntos","3 puntos","5 puntos","7 puntos"],r:1,e:"Cap. VII, tabla de puntaje: Cejada o Retroceso vale 3 puntos."},
+{p:"¿Cuántos puntos vale la Serpentina en el recorrido individual?",o:["3 puntos","5 puntos","7 puntos","10 puntos"],r:1,e:"Cap. VII, tabla de puntaje: Serpentina vale 5 puntos."},
+{p:"¿Cuántos puntos vale la Tabla de Resonancia en el recorrido individual?",o:["3 puntos","5 puntos","7 puntos","10 puntos"],r:1,e:"Cap. VII, tabla de puntaje: Tabla de Resonancia vale 5 puntos."},
+{p:"¿Cuántos puntos vale el componente Dominio, seguridad y concentración durante el evento?",o:["10 puntos","20 puntos","30 puntos","40 puntos"],r:2,e:"Cap. VII, tabla de puntaje: Dominio, seguridad, concentración, sentido de conducción y sostenimiento vale 30 puntos."},
+{p:"¿Cuántos puntos vale el Uso de Ayudas en la tabla de puntaje?",o:["5 puntos","10 puntos","15 puntos","20 puntos"],r:1,e:"Cap. VII, tabla de puntaje: Uso de Ayudas vale 10 puntos."},
+{p:"¿Cuántos pasos mínimos y máximos debe dar el ejemplar en el retroceso (cejada)?",o:["Mínimo 2 y máximo 4","Mínimo 3 y máximo 5","Mínimo 4 y máximo 6","Mínimo 5 y máximo 8"],r:2,e:"Cap. VII, sección Retroceder: el ejemplar debe realizar un mínimo de cuatro (4) y un máximo de seis (6) pasos en su marcha atrás."},
+{p:"¿Cuántas figuras del 8 deben ejecutar los concursantes en el recorrido individual?",o:["Una figura","Dos figuras","Tres figuras","Cuatro figuras"],r:1,e:"Cap. VII, sección Figura del 8: los concursantes deben ejecutar dos (2) figuras de 8 en torno a los postes."},
+{p:"¿Cuál es la altura aproximada de los postes usados en la Figura del 8?",o:["Un metro","Un metro y medio","Dos metros","Tres metros"],r:2,e:"Cap. VII, sección Figura del 8: los postes deben tener una altura de aproximadamente dos metros cada uno."},
+{p:"¿Cuál es la distancia entre los dos postes de la Figura del 8?",o:["Un metro","Dos metros","Tres metros","Cinco metros"],r:2,e:"Cap. VII, sección Figura del 8: los postes deben estar a una distancia de tres metros entre ellos."},
+{p:"¿Cuáles son las dimensiones de la tabla de resonancia?",o:["10-15m largo y 1m ancho","15-20m largo y 2m ancho","20-25m largo y 3m ancho","5-10m largo y 2m ancho"],r:1,e:"Cap. VII, sección Tabla de Resonancia: tendrá un largo de 15 a 20 metros y 2 metros de ancho."},
+{p:"¿Qué prueba opcional solo aplica para comparar exactamente dos competidores?",o:["Cambio de dirección","Trabajo en círculos","Prueba Paralelo","Orden de Plantar"],r:2,e:"Cap. VII, sección Pruebas Opcionales, num. 2: la Prueba Paralelo solo se realiza para comparar dos (2) competidores, no aplica para tres o más."},
+{p:"¿Cuántos círculos debe ejecutar el ejemplar en el Trabajo en Círculos (Batidora)?",o:["2 en cada sentido","3 en cada sentido","4 en cada sentido","5 en cada sentido"],r:1,e:"Cap. VII, prueba 4: el jinete somete al ejemplar a tres (3) círculos en una dirección, seguidos de tres círculos en dirección contraria."},
+{p:"¿Cuál es la última prueba de desempate si las cuatro primeras no lo resuelven?",o:["Cambio de dirección","Prueba Paralelo","Trabajo en Círculos","Cambio de Cabalgadura"],r:3,e:"Cap. VII, Pruebas Opcionales, num. 5: si las primeras cuatro pruebas no resuelven el empate, se utiliza el cambio de cabalgadura."},
+{p:"¿A partir de qué categoría se sortean las pruebas opcionales de dificultad?",o:["Infantiles de 9 a 11","Junior de 12 a 14 en adelante","Juveniles de 15 a 17","Aficionados de 18 en adelante"],r:1,e:"Cap. VII, sección Pruebas Opcionales: el sorteo aplica solo para categorías de 12 a 14 en adelante."},
+{p:"¿Qué penalización aplica si un participante hace una prueba incompleta?",o:["Descalificación directa","Hasta 5 puntos en concentración más hasta 5 por cada prueba omitida","Advertencia sin penalización","Solo pierde el puntaje de esa prueba"],r:1,e:"Cap. VII, Parágrafo: prueba incompleta genera penalización de hasta 5 puntos en concentración, más hasta 5 puntos por cada prueba que omita o haga incompleta."},
+{p:"¿En qué dirección inician los participantes el Recorrido en Conjunto?",o:["Hacia la izquierda a favor de las manecillas del reloj","Hacia la derecha en contra de las manecillas del reloj","En cualquier dirección a criterio del director","Solo en sentido de las manecillas del reloj"],r:1,e:"Cap. VII, sección Recorrido en Conjunto: los participantes iniciarán su recorrido hacia su derecha en contra de las manecillas del reloj."},
+{p:"¿Desde qué categoría aplica el examen teórico escrito en el Campeonato Mundial?",o:["Desde Mini, todas las categorías","Solo categorías paralímpicas","Categorías de 12 años en adelante","Solo mayores de 18 años"],r:2,e:"Cap. VII, Art. 1, A: toda amazona o jinete que compita en categoría de 12 años en adelante realizará examen teórico, solo en la Mundial."},
+{p:"¿Cuántos jueces se utilizan en los eventos Mundiales de CONFEPASO?",o:["Tres jueces","Cuatro jueces","Cinco jueces","Siete jueces"],r:2,e:"Cap. VIII: se utilizará cinco (5) jueces en los eventos Mundiales."},
+{p:"¿Cuántos jueces se utilizan en eventos de Circuito general?",o:["Solo 3 jueces","De 3 a 5 jueces","5 jueces siempre","De 2 a 4 jueces"],r:1,e:"Cap. VIII: se utilizará de tres (3) a cinco (5) jueces en eventos de Circuito general."},
+{p:"¿Cuántos participantes máximos seleccionan los jueces en la Etapa de Clasificación F1?",o:["Tres participantes","Cuatro participantes","Seis participantes","Ocho participantes"],r:2,e:"Cap. VIII, Etapa F1: los jueces seleccionarán un máximo de seis (6) participantes que a su entender sobresalen en el grupo."},
+{p:"¿Cuántos jueces mínimo deben coincidir para premiar a un participante cuando hay 3 jueces?",o:["Un juez","Dos jueces","Los tres jueces","No hay requisito mínimo"],r:1,e:"Cap. VIII, nota aclaratoria 3: para que un participante sea premiado debe ser tenido en cuenta por un mínimo de dos jueces de tres."},
+{p:"¿Qué ocurre si los formatos F1 y F2 son mostrados a personas no autorizadas?",o:["Se impone una multa económica","El director técnico debe renunciar","Será drásticamente sancionado por el director técnico","Se suspende la competencia"],r:2,e:"Cap. VIII, sección Formatos: cualquier incidencia en este sentido será drásticamente sancionada por el director técnico."},
+{p:"Si un participante ocupa el primer lugar en dos tarjetas de jueces (con 3 jueces), ¿qué posición final obtiene?",o:["Depende de la suma total","El primer lugar, independientemente del concepto de los otros jueces","Comparte el primer lugar","Solo si hay consenso de los tres"],r:1,e:"Cap. VIII, nota aclaratoria 1: el participante con primer lugar en dos tarjetas (3 jueces) ocupará finalmente el primer puesto independientemente del concepto de los otros jueces."},
+{p:"¿Cuál es la primera consideración para calcular los puestos en el formato F2?",o:["El consenso de los jueces","La suma total, siendo el menor el primer lugar","La nota de la prueba teórica","El número de vueltas adicionales"],r:1,e:"Cap. VIII, método de cálculo, A: la consideración primordial es la suma total, siendo el número menor el primer lugar y así en orden ascendente."},
+{p:"¿Qué sucede cuando la suma F2 es igual y no hay consenso entre los jueces?",o:["Se declara empate y comparten el puesto","Los participantes vuelven a la pista a comparación","El director técnico decide","Se usa directamente el puntaje teórico"],r:1,e:"Cap. VIII, método de cálculo, C: en sumas iguales donde no hay consenso en F2, los participantes en empate vuelven a la pista a comparación."},
+{p:"¿Cuántos días mínimo deben permanecer los caballos en el banco de la Mundial?",o:["Cuatro días","Seis días","Ocho días","Diez días"],r:2,e:"Cap. IX, sec. A: todos los caballos deben permanecer obligatoriamente un mínimo de ocho (8) días."},
+{p:"¿Con cuántos días de anticipación se realiza el sorteo de caballos para la Mundial?",o:["Dos días","Cuatro días","Seis días","Ocho días"],r:1,e:"Cap. IX: el director técnico llevará el sorteo de caballos cuatro (4) días antes de la primera competencia."},
+{p:"¿Cuándo entran los caballos al banco de caballos de la Mundial?",o:["El día uno","El día dos","El día tres","El día cuatro"],r:0,e:"Cap. IX, num. 1: los caballos estarán entrando al banco de caballos el día uno (1)."},
+{p:"¿Qué porcentaje de ejemplares debe aportar el país anfitrión al banco de caballos?",o:["20%","25%","30%","40%"],r:2,e:"Cap. IX: el país anfitrión deberá contar con equivalente en ejemplares al 30% de la cantidad de participantes inscritos."},
+{p:"¿Cuántas veces como máximo puede competir un caballo durante la Mundial?",o:["Dos veces","Tres veces","Cuatro veces","Seis veces"],r:2,e:"Cap. IX, num. 8: los caballos competirán un máximo de cuatro (4) veces durante la Mundial, con un máximo de dos (2) veces al día no consecutivas."},
+{p:"¿Cuántos minutos de práctica tienen las delegaciones con 15 jinetes y amazonas o menos?",o:["15 minutos","30 minutos","60 minutos","90 minutos"],r:1,e:"Cap. IX, num. 3: las delegaciones con 15 jinetes y amazonas o menos contarán con 30 minutos de práctica."},
+{p:"¿Cuánto tiempo de práctica tienen las delegaciones con 50 jinetes y amazonas o más?",o:["30 minutos","1 hora","1 hora y 30 minutos","2 horas"],r:2,e:"Cap. IX, num. 5: las delegaciones con 50 jinetes y amazonas o más contarán con una hora y treinta (30) minutos. Máximo 10 minutos por jinete."},
+{p:"¿Cuántos ejemplares mínimos de reemplazo debe tener el banco de caballos?",o:["Un ejemplar","Dos ejemplares","Tres ejemplares","Cinco ejemplares"],r:2,e:"Cap. IX: se deben tener mínimo tres (3) ejemplares de reemplazo para el banco."},
+{p:"¿Qué le ocurre a un caballo excusado por el veterinario en la Mundial?",o:["Puede reintegrarse tras recuperarse","No puede ser asignado a ningún participante ni regresar","Puede usarse en categorías paralímpicas","Puede competir al día siguiente"],r:1,e:"Cap. IX, num. 9: el caballo excusado no puede ser asignado a ningún participante; si sale del banco no puede regresar ni participar en el resto del evento."},
+{p:"¿Cuántas oportunidades de cambio de caballo tiene cada país durante la Mundial?",o:["Dos oportunidades","Una sola oportunidad","Tres oportunidades","Sin límite si hay justificación"],r:1,e:"Cap. IX, nota: cada país tendrá una sola oportunidad para cambio de caballos."},
+{p:"¿En qué basan principalmente sus fallos los jueces?",o:["En la calidad y renombre del ejemplar","En el desempeño, habilidad y cualidades del equitador","En la experiencia previa del participante","En el resultado de la prueba teórica"],r:1,e:"Cap. X, Art. 1: los jueces basarán sus fallos fundamentalmente en el desempeño, la habilidad y las cualidades que como equitadores poseen las amazonas y los jinetes."},
+{p:"¿Cuántos jueces integra el panel para calificar un Campeonato Mundial?",o:["Tres, propuestos por CONFEPASO","Cinco, uno propuesto por cada país participante","Siete elegidos por votación","Cuatro jueces y un árbitro"],r:1,e:"Cap. X, Art. 8: se nombrará un panel de cinco (5) jueces; cada país propondrá un juez nacional."},
+{p:"¿Qué parentesco inhabilita a un juez para juzgar a un concursante?",o:["Consanguinidad en segundo grado","Consanguinidad en cuarto grado y afinidad en segundo","Cualquier parentesco conocido","Consanguinidad en primer grado únicamente"],r:1,e:"Cap. X, Art. 8: no podrán ser jueces quienes tengan consanguinidad en cuarto grado y afinidad en segundo grado con el concursante."},
+{p:"¿Qué color de cinta recibe el Campeón en la premiación?",o:["Cinta Azul","Cinta Tricolor","Cinta Roja","Cinta Verde"],r:1,e:"Cap. XI, Art. 1: al título de Campeón(a) le corresponde Cinta Tricolor."},
+{p:"¿Qué color de cinta corresponde al Primer Puesto?",o:["Cinta Tricolor","Cinta Azul","Cinta Roja","Cinta Amarilla"],r:1,e:"Cap. XI, Art. 1: al Primer Puesto le corresponde Cinta Azul."},
+{p:"¿Cuántos puntos otorga la Medalla de Oro (Campeón/a) en la tabla de puntaje del campeonato?",o:["3 puntos","4 puntos","5 puntos","10 puntos"],r:2,e:"Cap. XI, Art. 3: Medalla de Oro, Campeón(a), vale 5 puntos."},
+{p:"¿Cuántos puntos otorga la Medalla de Plata (Primer Puesto)?",o:["1 punto","2 puntos","3 puntos","5 puntos"],r:2,e:"Cap. XI, Art. 3: Medalla de Plata, Primer Puesto, vale 3 puntos."},
+{p:"¿Cuántos puntos otorga la Medalla de Bronce (Segundo Puesto)?",o:["1 punto","2 puntos","3 puntos","5 puntos"],r:0,e:"Cap. XI, Art. 3: Medalla de Bronce, Segundo Puesto, vale 1 punto."},
+{p:"¿Qué distintivo se otorga a todos los participantes sin importar el puesto?",o:["Cinta Blanca","Mención Honorífica","Cinta Verde","Diploma de participación"],r:1,e:"Cap. XI, Art. 1: la Mención Honorífica corresponde a todos los participantes."},
+{p:"¿Qué color de cinta corresponde al Tercer Puesto?",o:["Cinta Azul","Cinta Roja","Cinta Amarilla","Cinta Verde"],r:2,e:"Cap. XI, Art. 1: al Tercer Puesto le corresponde Cinta Amarilla."},
+{p:"¿Quién es el organismo competente para imponer sanciones disciplinarias en CONFEPASO?",o:["El Director Técnico","El Comité Disciplinario de CONFEPASO","Los Jueces del evento","La Federación del país sede"],r:1,e:"Cap. XII, Art. 1: el Comité Disciplinario de CONFEPASO es el organismo competente para imponer sanciones."},
+{p:"¿Qué es el fenotipo del caballo según el reglamento?",o:["La forma de andar característica de cada raza","El conjunto de caracteres hereditarios comunes a una determinada especie","El registro genealógico del ejemplar","La edad determinada por los dientes"],r:1,e:"Anexos, sección Fenotipo: es el conjunto de caracteres hereditarios comunes a una determinada especie: cabeza, cuello, pecho, vientre, grupa, cola, aplomos, alzada y color."},
+{p:"¿Cuál es la alzada mínima para machos de Trote y Galope Colombiano mayores de 61 meses?",o:["1.37 metros","1.38 metros","1.40 metros","1.42 metros"],r:2,e:"Anexos, Alzadas Mínimas, Trote y Galope, Machos: mayores de 61 meses tienen alzada mínima de 1.40 metros."},
+{p:"¿Cuál es la alzada mínima para hembras de Trote y Galope Colombiano mayores de 61 meses?",o:["1.34 metros","1.36 metros","1.38 metros","1.40 metros"],r:2,e:"Anexos, Alzadas Mínimas, Trote y Galope, Hembras: mayores de 61 meses tienen alzada mínima de 1.38 metros."},
+{p:"¿Con qué instrumento se mide la alzada del caballo?",o:["Cinta métrica","Hipómetro","Regla graduada","Calibrador"],r:1,e:"Anexos, sección Alzada: la alzada se mide con el hipómetro, compuesto de una regla graduada unida a otra perpendicularmente."},
+{p:"¿A cuántos grados de inclinación debe tener la cuartilla del Caballo de Paso?",o:["30 grados","45 grados","60 grados","90 grados"],r:1,e:"Anexos, Extremidades del Caballo de Paso: la cuartilla debe tener una inclinación hacia atrás de aproximadamente 45 grados."},
+{p:"¿Qué diferencia el Paso Fino de la Trocha Pura Colombiana en cuanto a la secuencia de pisadas?",o:["El Paso Fino usa bípedos diagonales; la Trocha cuatro tiempos laterales","El Paso Fino usa cuatro tiempos isocrónicos laterales; la Trocha usa bípedos diagonales","Ambos usan la misma secuencia pero diferente velocidad","El Paso Fino es en tres tiempos; la Trocha en dos tiempos"],r:1,e:"Anexos: el Paso Fino tiene ciclo de cuatro tiempos isocrónicos, sucesivos y alternos en patrón lateral. La Trocha usa movimientos bípedos diagonales en cuatro tiempos."},
+{p:"¿Qué es la batida según las definiciones básicas del reglamento?",o:["El movimiento completo de una extremidad","El nombre genérico del golpe de un casco cuando se asienta en el piso","La velocidad de desplazamiento","El sonido del relincho"],r:1,e:"Anexos, Definiciones Básicas: batida es el nombre genérico que se atribuye al golpe de un casco cuando este se asienta en el piso al encontrarse en movimiento cualquier miembro."},
+{p:"¿Qué es la Cadencia Velocidad según el reglamento?",o:["La forma en que el jinete toma las riendas","La velocidad de ritmo representada en número de batidas por unidad de tiempo","El equilibrio del jinete","El estilo de cada andar"],r:1,e:"Anexos, Definiciones Básicas: Cadencia Velocidad es la velocidad de ritmo, representada en número de batidas por unidad de tiempo."},
+{p:"¿Qué es un Aire Compuesto según el reglamento?",o:["El que tiene más velocidad que el simple","El conformado por dos aires como Trote y Galope, o Trocha y Galope","El que solo ejecutan caballos machos","El que se juzga con criterio diferente"],r:1,e:"Anexos, Definiciones Básicas: Aire Compuesto es el que está conformado por dos aires (Trote y Galope / Trocha y Galope)."},
+{p:"¿Qué es un Aire Simple según el reglamento?",o:["El que tiene menos velocidad","El formado por un único aire como Paso Fino y Trocha","El que ejecutan todos los caballos","El que se juzga con menos jueces"],r:1,e:"Anexos, Definiciones Básicas: Aire Simple es el formado por un único aire (Paso Fino y Trocha)."},
+{p:"¿Cuál es el nombre científico del caballo?",o:["Equus Africanus","Equus Caballus","Equus Ferus","Equus Asinus"],r:1,e:"Anexos, Descripción del Caballo: Nombre Científico: Equus Caballus. Familia: Équidos. Orden: Peridáctilos. Clase: Mamífero."},
+{p:"¿Cuántos dientes tiene en total un caballo macho adulto?",o:["36 dientes","38 dientes","40 dientes","44 dientes"],r:2,e:"Anexos, Edad de los Caballos: el caballo tiene en cada mandíbula seis incisivos, dos caninos, seis molares de reemplazo y seis molares permanentes, para un total de 40 dientes."},
+{p:"¿Por qué las yeguas tienen menos dientes que los machos?",o:["Sus mandíbulas son más pequeñas","No tienen caninos o colmillos, por lo que poseen solo 36 dientes","Pierden dientes con la edad más rápido","Tienen menos molares permanentes"],r:1,e:"Anexos: como las yeguas no tienen caninos o colmillos, poseen solo 36 dientes, con sus excepciones."},
+{p:"¿A qué edad en meses se considera que el caballo deja de ser potro?",o:["48 meses","54 meses","60 meses","72 meses"],r:2,e:"Anexos, sección Edad: a los 60 meses emparejan los últimos. NOTA: hasta este momento el caballo es considerado un potro."},
+{p:"¿Qué colores de pelaje son descalificables para competir?",o:["Pelajes oscuros uniformes","Manchas o pintas en el cuerpo fuera de la cabeza que correspondan a pelaje blanco sobre piel rosada","Cualquier color de pelaje claro","Manchas solo en la cabeza"],r:1,e:"Anexos, sección Pelaje: las manchas o pintas en el cuerpo en lugar distinto a la cabeza que correspondan a pelaje blanco sobre piel rosada impedirán la participación."},
+{p:"¿Cuál es el ancho máximo permitido para la cincha?",o:["5 centímetros","8 centímetros","10 centímetros","15 centímetros"],r:2,e:"Anexos, De la Presentación: la cincha deberá ser de hasta un máximo de diez centímetros (10 cm) o cuatro pulgadas."},
+{p:"¿Cuál es la medida máxima del puente del freno?",o:["1 pulgada","2 pulgadas o 5 cm","3 pulgadas","6 pulgadas"],r:1,e:"Anexos, De los Frenos: el puente no debe exceder 2 pulgadas o 5 cm, por seguridad del jinete y amazona."},
+{p:"¿Cuántas pulgadas es la medida reglamentaria de la pata del freno?",o:["3 pulgadas","4 pulgadas","6 pulgadas","8 pulgadas"],r:2,e:"Anexos, De los Frenos: los frenos deben tener seis (6) pulgadas la pata del freno."},
+{p:"¿Cuánto es el ancho máximo de las correas del estribo?",o:["2 cm o 1 pulgada","5 cm o 2 pulgadas","10 cm o 4 pulgadas","3 cm o 1.5 pulgadas"],r:1,e:"Anexos, sección Silla: las correas del estribo serán de un máximo de cinco centímetros (5 cm) o dos pulgadas de ancho."},
+{p:"¿De qué colores puede ser la rienda reglamentaria?",o:["Solo negro","Blanco, negro o marrón","Cualquier color liso","Solo marrón o negro"],r:1,e:"Anexos, Rienda y Jáquima: la rienda debe ser de color blanco, negro o marrón, sin ningún aditamento."},
+{p:"¿Cuál es la diferencia en el número de jueces entre evento Mundial y evento de Circuito general?",o:["Mundial: 3; Circuito: 5","Mundial: 5; Circuito: 3 a 5","Siempre son 5 en ambos","Mundial: 7; Circuito: 3"],r:1,e:"Cap. VIII: cinco (5) jueces en Mundiales; de tres (3) a cinco (5) en Circuito general."},
+{p:"¿Cómo se juzga el Trote y Galope Colombiano en cuanto a sus dos componentes?",o:["70% trote y 30% galope","50% trote y 50% galope","Solo se juzga el trote","Solo se juzga el galope"],r:1,e:"Anexos, sección Trote Colombiano: el juzgamiento se realiza considerando en un 50% el Trote y en un 50% el Galope."},
+{p:"¿Cuál es la diferencia en pruebas opcionales entre categorías Mini y Junior?",o:["Las Minis tienen las mismas pruebas que Junior","Las Minis solo realizan cambio de dirección; las Junior sortean entre cuatro pruebas más cambio de cabalgadura","Las Minis no realizan ninguna prueba opcional","Las Junior solo realizan prueba paralelo"],r:1,e:"Cap. VII: las categorías Mini y Paralímpicas solo realizan cambio de dirección. Las de 12 años en adelante sortean entre cambio de dirección, paralelo, orden plantar, trabajo en círculos, y cambio de cabalgadura."},
+{p:"¿En qué se diferencia la sanción entre mayores de 12 años y las categorías Mini, Preinfantiles y Paralímpicas?",o:["No hay diferencia","Los mayores de 12 pueden ser descalificados; los menores y paralímpicos solo son penalizados","Los menores pueden ser descalificados más fácilmente","Las mismas causas generan iguales consecuencias en todas las categorías"],r:1,e:"Cap. VI, Art. 10: en las categorías Mini, Preinfantiles y Paralímpicas los motivos del Art. 9 aplican como penalizables, pues estas categorías están exentas de descalificación."},
+{p:"¿Cómo se diferencia el Bípedo del Tren según la terminología del reglamento?",o:["Son sinónimos","El bípedo siempre está formado por una mano y una pata; el tren clasifica dos miembros por posición dorsal (anterior o posterior)","El bípedo es solo de miembros anteriores; el tren solo de posteriores","No hay diferencia funcional"],r:1,e:"Anexos, Definiciones Básicas: el bípedo siempre está formado por una mano y una pata. El tren es el conjunto de dos miembros clasificados por su ubicación en el dorso: tren anterior (mano y mano), tren posterior (pata y pata)."}
+];
+
+let qs=[],cur=0,ans=[];
+const L=['A','B','C','D'];
+
+function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
+function startExam(){qs=shuffle(B).slice(0,10);cur=0;ans=[];show('se');renderQ()}
+
+function renderQ(){
+  const q=qs[cur];
+  document.getElementById('pf').style.width=(cur/10*100)+'%';
+  document.getElementById('qn').textContent='Pregunta '+(cur+1);
+  document.getElementById('qt').textContent=q.p;
+  const ol=document.getElementById('ol');ol.innerHTML='';
+  q.o.forEach((o,i)=>{
+    const b=document.createElement('button');
+    b.className='opt';
+    b.innerHTML=`<span class="opt-l">${L[i]}</span><span>${o}</span>`;
+    b.onclick=()=>pick(i);
+    ol.appendChild(b);
+  });
+  const fb=document.getElementById('fb');fb.className='fb';fb.innerHTML='';
+  const bn=document.getElementById('bn');bn.className='btn-next';
+  bn.textContent=cur<9?'Siguiente →':'Ver Resultados →';
+}
+
+function pick(idx){
+  const q=qs[cur];
+  document.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+  const btns=document.querySelectorAll('.opt');
+  const ok=idx===q.r;
+  btns[idx].classList.add(ok?'ok':'bad');
+  if(!ok)btns[q.r].classList.add('ok');
+  ans.push({q,chosen:idx,ok});
+  const fb=document.getElementById('fb');
+  fb.className='fb show '+(ok?'ok-fb':'bad-fb');
+  if(ok){fb.innerHTML=`<strong>Correcto.</strong> ${q.e}`}
+  else{fb.innerHTML=`<strong>Incorrecto.</strong> La respuesta correcta es <strong>${L[q.r]}) ${q.o[q.r]}</strong>. ${q.e}`}
+  document.getElementById('bn').classList.add('show');
+}
+
+function nextQ(){cur++;if(cur>=10)showResults();else renderQ()}
+
+function showResults(){
+  document.getElementById('pf').style.width='100%';
+  const c=ans.filter(a=>a.ok).length,w=10-c;
+  document.getElementById('rsn').textContent=c;
+  document.getElementById('rsc').textContent=c;
+  document.getElementById('rsw').textContent=w;
+  const labels=[[10,'Puntaje Perfecto','Dominan el reglamento. Listas para el Campeonato Mundial.'],[8,'Excelente resultado','Muy sólidas. Solo algunos detalles por repasar.'],[6,'Buen intento','Van bien, hay temas que vale la pena reforzar.'],[0,'Hay que seguir practicando','Revisen las respuestas incorrectas e intenten de nuevo.']];
+  const lbl=labels.find(l=>c>=l[0]);
+  document.getElementById('rsl').textContent=lbl[1];
+  document.getElementById('rss').textContent=lbl[2];
+  const rl=document.getElementById('rl');rl.innerHTML='';
+  ans.forEach((a,i)=>{
+    const d=document.createElement('div');
+    d.className='rev-item '+(a.ok?'r-ok':'r-bad');
+    let m=a.ok?`<span class="r-ok-t">Respondiste: ${L[a.chosen]}) ${a.q.o[a.chosen]}</span>`:
+      `<span class="r-bad-t">Respondiste: ${L[a.chosen]}) ${a.q.o[a.chosen]}</span><br><span class="r-ok-t">Correcta: ${L[a.q.r]}) ${a.q.o[a.q.r]}</span>`;
+    d.innerHTML=`<span class="r-badge ${a.ok?'rb-ok':'rb-bad'}">${a.ok?'Correcta':'Incorrecta'}</span>
+    <div class="rev-q">${i+1}. ${a.q.p}</div>
+    <div class="rev-m">${m}<span class="r-exp">${a.q.e}</span></div>`;
+    rl.appendChild(d);
+  });
+  show('sr');window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
